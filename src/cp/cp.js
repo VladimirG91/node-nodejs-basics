@@ -12,7 +12,6 @@ const spawnChildProcess = async (args) => {
   const childPath = path.join(folderPath, childFile);
 
   const childProcess = cp.fork(childPath, args, { silent: true });
-
   pipeline(process.stdin, childProcess.stdin, () => {});
   pipeline(childProcess.stdout, process.stdout, () => {});
 };
